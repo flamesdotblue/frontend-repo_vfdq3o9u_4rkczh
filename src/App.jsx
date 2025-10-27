@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import ServicesGrid from './components/ServicesGrid.jsx';
+import ProcessTimeline from './components/ProcessTimeline.jsx';
+import CaseStudies from './components/CaseStudies.jsx';
 import Footer from './components/Footer.jsx';
 
 function useHashRoute() {
@@ -21,51 +22,8 @@ function HomePage() {
     <>
       <Hero />
       <ServicesGrid />
-      <section className="relative py-16 md:py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_80%,rgba(14,165,233,0.18),transparent_60%)] pointer-events-none" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
-            className="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-900/40"
-          >
-            <h3 className="text-2xl font-semibold text-white">Why teams choose us</h3>
-            <p className="mt-3 text-slate-300">
-              We blend senior‑level strategy with hands‑on execution. No fluff, just outcomes — faster sites,
-              higher rankings, and ad spend that actually performs.
-            </p>
-            <ul className="mt-4 space-y-2 text-slate-200 text-sm list-disc pl-5">
-              <li>Clear roadmaps and weekly updates</li>
-              <li>Transparent pricing and timelines</li>
-              <li>Ownership of your code and data</li>
-            </ul>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="p-6 rounded-2xl border border-white/10 bg-white/5"
-          >
-            <h3 className="text-2xl font-semibold text-white">Results at a glance</h3>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              {[
-                ['+120%', 'organic growth'],
-                ['-38%', 'CAC reduction'],
-                ['1.2s', 'LCP on average'],
-                ['3.8x', 'ROAS across channels'],
-              ].map(([k, v]) => (
-                <div key={k} className="p-4 rounded-xl bg-slate-900/60 border border-white/10">
-                  <div className="text-2xl font-bold text-white">{k}</div>
-                  <div className="text-xs text-slate-300 mt-1">{v}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudies />
+      <ProcessTimeline />
     </>
   );
 }
@@ -82,6 +40,8 @@ function ServicesPage() {
         </div>
       </section>
       <ServicesGrid />
+      <ProcessTimeline />
+      <CaseStudies />
     </>
   );
 }
@@ -90,13 +50,7 @@ function AboutPage() {
   return (
     <section className="pt-28 md:pt-32 pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-          className="p-6 rounded-2xl border border-white/10 bg-white/5"
-        >
+        <div className="p-6 rounded-2xl border border-white/10 bg-white/5">
           <h1 className="text-4xl md:text-5xl font-bold text-white">A partner, not a vendor</h1>
           <p className="mt-4 text-slate-300">
             We’re a senior team with a maker mindset. Strategy leads, then design and code move quickly behind it.
@@ -115,37 +69,22 @@ function AboutPage() {
               </div>
             ))}
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, delay: 0.05 }}
-          className="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-600/20 via-violet-600/10 to-fuchsia-600/20"
-        >
+        </div>
+        <div className="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-600/20 via-violet-600/10 to-fuchsia-600/20">
           <h2 className="text-2xl font-semibold text-white">Our approach</h2>
           <ol className="mt-4 space-y-3 text-sm text-slate-200">
-            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">
-              Discover: audit tech, brand, funnels — align on goals and constraints.
-            </li>
-            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">
-              Design: premium UI with clear information architecture and states.
-            </li>
-            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">
-              Build: production‑grade implementation with performance baked in.
-            </li>
-            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">
-              Grow: ship, measure, iterate — content, SEO, and paid media.
-            </li>
+            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">Discover: audit tech, brand, funnels — align on goals and constraints.</li>
+            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">Design: premium UI with clear information architecture and states.</li>
+            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">Build: production‑grade implementation with performance baked in.</li>
+            <li className="p-3 rounded-lg bg-slate-900/60 border border-white/10">Grow: ship, measure, iterate — content, SEO, and paid media.</li>
           </ol>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
 function ContactPage() {
-  const [status, setStatus] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -155,9 +94,7 @@ function ContactPage() {
     const mailto = `mailto:hello@codetech.solutions?subject=Project%20Inquiry%20from%20${encodeURIComponent(
       name || 'Website visitor'
     )}&body=${encodeURIComponent(`Email: ${email}\n\n${message}`)}`;
-    setStatus('Opening mail client…');
     window.location.href = mailto;
-    setTimeout(() => setStatus(''), 2500);
   };
 
   return (
@@ -201,7 +138,7 @@ function ContactPage() {
             <button type="submit" className="px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all">
               Request proposal
             </button>
-            {status && <span className="text-sm text-slate-300">{status}</span>}
+            <a href="#/services" className="text-sm text-slate-300 hover:text-white">See packages</a>
           </div>
         </form>
       </div>

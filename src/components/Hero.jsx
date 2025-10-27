@@ -3,43 +3,49 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative pt-28 md:pt-32">
-      <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(59,130,246,0.25),transparent_60%)] pointer-events-none" />
+    <section className="relative min-h-[84vh] flex items-center overflow-hidden pt-24 md:pt-28">
+      {/* Full-width animated background */}
+      <div className="absolute inset-0">
+        <Spline
+          scene="https://prod.spline.design/vc19ejtcC5VJjy5v/scene.splinecode"
+          style={{ width: '100%', height: '100%' }}
+        />
+        {/* Soft gradient veil for legibility (doesn't block interactions) */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-slate-950/90" />
+      </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
-        <div className="relative order-2 lg:order-1">
+      {/* Foreground content */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-3xl">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight text-white"
           >
-            Build. Rank. Scale.
-            <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-fuchsia-400">
-              Code Tech Solutions
-            </span>
+            Smart web, SEO and growth for ambitious teams
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-5 text-slate-300 text-lg leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.08 }}
+            className="mt-5 text-slate-200 text-lg md:text-xl leading-relaxed"
           >
-            A next‑gen digital partner for startups and small businesses. We craft premium websites,
-            SEO that moves the needle, e‑commerce that converts, and performance marketing that scales.
+            Code Tech Solutions designs, builds, and scales digital experiences that convert. From high‑performance
+            websites to data‑driven marketing, we ship outcomes — fast.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.16 }}
             className="mt-8 flex flex-col sm:flex-row gap-3"
           >
             <a
               href="#/contact"
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all"
             >
-              Get a proposal
+              Start a project
             </a>
             <a
               href="#/services"
@@ -52,29 +58,21 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.22, duration: 0.8 }}
             className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4"
           >
             {[
-              ['50+ projects', 'shipped with care'],
-              ['Avg. +42% CTR', 'on paid campaigns'],
-              ['Core Web Vitals', 'optimized sites'],
-              ['E‑commerce', 'conversion focus'],
+              ['50+ launches', 'product & marketing'],
+              ['A+ vitals', 'speed & stability'],
+              ['3.8x avg ROAS', 'paid media'],
+              ['42%+ CTR lift', 'creative & copy'],
             ].map(([title, sub]) => (
-              <div key={title} className="p-4 rounded-xl bg-white/5 border border-white/10">
+              <div key={title} className="p-4 rounded-xl bg-slate-900/60 border border-white/10 backdrop-blur">
                 <div className="text-sm font-semibold text-white">{title}</div>
                 <div className="text-xs text-slate-300 mt-1">{sub}</div>
               </div>
             ))}
           </motion.div>
-        </div>
-
-        <div className="relative order-1 lg:order-2 h-[420px] sm:h-[520px] lg:h-[560px] rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
-          <Spline
-            scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode"
-            style={{ width: '100%', height: '100%' }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
         </div>
       </div>
     </section>
